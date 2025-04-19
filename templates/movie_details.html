@@ -7,4 +7,29 @@
     {{ movie.overview }}
 </p>
 <img class="poster" src="{{ movie.poster_path }}">
+
+{% if 'user_email' in session %}
+    <h2>Rate this movie</h2>
+    <form action="/movies/{{ movie.movie_id }}/ratings" method="POST">
+        <p>
+            <label>Score (0-5):
+                <select name="rating">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </label>
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+    </form>
+{% else %}
+    <p>
+        <a href="/">Log in</a> to rate this movie.
+    </p>
+{% endif %}
 {% endblock %}

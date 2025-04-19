@@ -39,6 +39,16 @@ def get_users():
 def get_user_by_id(user_id):
     """Return a user by primary key."""
     return User.query.get(user_id)
+
+def get_user_by_email(email):
+    """Return a user by email."""
+    return User.query.filter(User.email == email).first()
+
+def create_rating(user, movie, score):
+    """Create and return a new rating."""
+    rating = Rating(user=user, movie=movie, score=score)
+    return rating
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
