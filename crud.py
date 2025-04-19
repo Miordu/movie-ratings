@@ -32,6 +32,13 @@ def get_movie_by_id(movie_id):
     """Return a movie by primary key."""
     return Movie.query.get(movie_id)
 
+def get_users():
+    """Return all users."""
+    return User.query.all()
+
+def get_user_by_id(user_id):
+    """Return a user by primary key."""
+    return User.query.get(user_id)
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
